@@ -2,34 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Focus Timer</title>
+  <title>Event Timer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
-  <h2>⏱ Focus Timer</h2>
-
-  <!-- Circular Timer -->
-  <div class="circle">
-    <svg width="220" height="220">
-      <circle cx="110" cy="110" r="100" class="bg"></circle>
-      <circle cx="110" cy="110" r="100" class="progress" id="progressCircle"></circle>
-    </svg>
-    <div class="time" id="timer">00:00</div>
-  </div>
-
-  <div class="buttons">
-    <button onclick="startTimer()">Start</button>
-    <button onclick="pauseTimer()">Pause</button>
-    <button onclick="resetTimer()">Reset</button>
-  </div>
+<!-- START SCREEN -->
+<div id="startScreen" class="start-screen">
+  <button class="glow-btn" onclick="startApp()">START</button>
 </div>
 
-<!-- LOUD buzzer -->
-<audio id="buzzer" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav"></audio>
+<!-- TIMER SCREEN -->
+<div id="timerScreen" class="timer-screen hidden">
+  <h1 id="timer">00:00</h1>
+</div>
+
+<audio id="buzzer" src="buzzer.mp3"></audio>
 
 <script src="script.js"></script>
-
 </body>
 </html>
