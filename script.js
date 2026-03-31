@@ -28,7 +28,6 @@ function updateDisplay() {
   timer.innerText =
     `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
 
-  // ⚠️ LAST MINUTE GLOW
   if (seconds >= totalSeconds - 60) {
     timer.classList.add("warning");
   }
