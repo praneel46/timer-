@@ -1,9 +1,19 @@
 body {
   margin: 0;
   height: 100vh;
-  font-family: Arial;
+  font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
-  color: white;
+  background: black;
+}
+
+/* FADE ANIMATION */
+.fade-in {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* START SCREEN */
@@ -12,27 +22,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
   background: radial-gradient(circle, #1a0000, #000);
 }
 
 /* GLOW BUTTON */
 .glow-btn {
-  font-size: 50px;
-  padding: 30px 80px;
+  font-size: 60px;
+  padding: 30px 90px;
   border: none;
   border-radius: 20px;
-  background: #ff3c00;
+  background: linear-gradient(45deg, #ff3c00, #ff0000);
   color: white;
   cursor: pointer;
+
   box-shadow:
-    0 0 30px #ff3c00,
+    0 0 20px #ff3c00,
     0 0 60px #ff0000,
     0 0 120px #ff0000;
-  transition: 0.3s;
+
+  transition: all 0.3s ease;
 }
 
 .glow-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  box-shadow:
+    0 0 40px #ff6a00,
+    0 0 100px #ff0000,
+    0 0 200px #ff0000;
 }
 
 /* TIMER SCREEN */
@@ -42,32 +59,41 @@ body {
   justify-content: center;
   align-items: center;
 
-  /* FIRE GLOW BACKGROUND */
-  background: radial-gradient(circle at center, #330000, #000000);
-  animation: fireGlow 2s infinite alternate;
+  background: radial-gradient(circle at center, #330000, #000);
+  animation: fireBG 2s infinite alternate;
 }
 
-/* BIG TIMER TEXT */
-#timer {
-  font-size: 180px;
-  letter-spacing: 5px;
-
-  color: #ff3c00;
-  text-shadow:
-    0 0 20px #ff3c00,
-    0 0 40px #ff0000,
-    0 0 80px #ff0000,
-    0 0 150px #ff0000;
-}
-
-/* FIRE ANIMATION */
-@keyframes fireGlow {
+/* FIRE BACKGROUND ANIMATION */
+@keyframes fireBG {
   from {
-    background: radial-gradient(circle at center, #330000, #000);
+    background: radial-gradient(circle at center, #220000, #000);
   }
   to {
     background: radial-gradient(circle at center, #660000, #000);
   }
+}
+
+/* HUGE TIMER */
+#timer {
+  font-size: 200px;
+  letter-spacing: 8px;
+
+  color: #ff3c00;
+
+  text-shadow:
+    0 0 10px #ff3c00,
+    0 0 40px #ff0000,
+    0 0 80px #ff0000,
+    0 0 160px #ff0000;
+
+  animation: pulse 1.5s infinite;
+}
+
+/* PULSE EFFECT */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .hidden {
