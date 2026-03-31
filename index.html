@@ -4,24 +4,30 @@
   <meta charset="UTF-8">
   <title>Focus Timer</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
-  <div class="title">⏱ Focus Timer</div>
-  <h1 id="timer">00:00</h1>
+  <h2>⏱ Focus Timer</h2>
 
-  <div class="buttons">
-    <button class="start" onclick="startTimer()">Start</button>
-    <button class="pause" onclick="pauseTimer()">Pause</button>
-    <button class="reset" onclick="resetTimer()">Reset</button>
+  <!-- Circular Timer -->
+  <div class="circle">
+    <svg width="220" height="220">
+      <circle cx="110" cy="110" r="100" class="bg"></circle>
+      <circle cx="110" cy="110" r="100" class="progress" id="progressCircle"></circle>
+    </svg>
+    <div class="time" id="timer">00:00</div>
   </div>
 
-  <div class="footer">Stay focused. Stay productive 🚀</div>
+  <div class="buttons">
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="resetTimer()">Reset</button>
+  </div>
 </div>
 
-<audio id="buzzer" src="https://www.soundjay.com/button/beep-07.wav"></audio>
+<!-- LOUD buzzer -->
+<audio id="buzzer" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav"></audio>
 
 <script src="script.js"></script>
 
