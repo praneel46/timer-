@@ -6,96 +6,70 @@ body {
   background: black;
 }
 
-/* FADE ANIMATION */
-.fade-in {
-  animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 /* START SCREEN */
 .start-screen {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-
   background: radial-gradient(circle, #1a0000, #000);
 }
 
-/* GLOW BUTTON */
+/* START BUTTON */
 .glow-btn {
   font-size: 60px;
   padding: 30px 90px;
   border: none;
   border-radius: 20px;
-  background: linear-gradient(45deg, #ff3c00, #ff0000);
+  background: #ff3c00;
   color: white;
   cursor: pointer;
-
-  box-shadow:
-    0 0 20px #ff3c00,
-    0 0 60px #ff0000,
-    0 0 120px #ff0000;
-
-  transition: all 0.3s ease;
-}
-
-.glow-btn:hover {
-  transform: scale(1.15);
-  box-shadow:
-    0 0 40px #ff6a00,
-    0 0 100px #ff0000,
-    0 0 200px #ff0000;
+  box-shadow: 0 0 30px #ff0000;
 }
 
 /* TIMER SCREEN */
 .timer-screen {
   height: 100vh;
+  width: 100vw;
+
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: radial-gradient(circle at center, #330000, #000);
+  /* 🔥 BACKGROUND GLOW ONLY */
+  background: radial-gradient(circle at center, #200000, #000);
   animation: fireBG 2s infinite alternate;
 }
 
-/* FIRE BACKGROUND ANIMATION */
+/* FIRE BACKGROUND */
 @keyframes fireBG {
   from {
-    background: radial-gradient(circle at center, #220000, #000);
+    background: radial-gradient(circle at center, #200000, #000);
   }
   to {
-    background: radial-gradient(circle at center, #660000, #000);
+    background: radial-gradient(circle at center, #600000, #000);
   }
 }
 
-/* HUGE TIMER */
+/* BIG TIMER */
 #timer {
-  font-size: 200px;
-  letter-spacing: 8px;
+  font-size: 18vw;   /* FULL SCREEN SIZE */
+  color: white;
+  font-weight: bold;
+  letter-spacing: 10px;
+}
 
+/* LAST MINUTE GLOW */
+.warning {
   color: #ff3c00;
 
   text-shadow:
     0 0 10px #ff3c00,
-    0 0 40px #ff0000,
-    0 0 80px #ff0000,
-    0 0 160px #ff0000;
-
-  animation: pulse 1.5s infinite;
+    0 0 30px #ff0000,
+    0 0 60px #ff0000;
 }
 
-/* PULSE EFFECT */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
+/* HIDE */
 .hidden {
   display: none;
 }
