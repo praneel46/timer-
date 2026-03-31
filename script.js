@@ -1,6 +1,10 @@
 let seconds = 0;
 let interval = null;
 
+const totalSeconds = 1200; // 20 minutes
+const circle = document.getElementById("progressCircle");
+const circumference = 2 * Math.PI * 100;
+
 function updateDisplay() {
   let mins = Math.floor(seconds / 60);
   let secs = seconds % 60;
@@ -8,6 +12,11 @@ function updateDisplay() {
   document.getElementById("timer").innerText =
     String(mins).padStart(2, '0') + ":" +
     String(secs).padStart(2, '0');
+
+  // Update circular progress
+  let progress = seconds / totalSeconds;
+  let offset = circumference - progress * circumference;
+  circle.style.strokeDashoffset = offset;
 }
 
 function startTimer() {
@@ -17,7 +26,7 @@ function startTimer() {
     seconds++;
     updateDisplay();
 
-    if (seconds === 1200) { // 20 minutes
+    if (seconds >= totalSeconds) {
       clearInterval(interval);
       document.getElementById("buzzer").play();
     }
