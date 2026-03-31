@@ -1,13 +1,22 @@
 let seconds = 0;
 let interval = null;
 
-const totalSeconds = 1200; // 20 min
+const totalSeconds = 1200;
 
 function startApp() {
+  enterFullscreen();
+
   document.getElementById("startScreen").classList.add("hidden");
   document.getElementById("timerScreen").classList.remove("hidden");
 
   startTimer();
+}
+
+function enterFullscreen() {
+  let elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
 }
 
 function updateDisplay() {
@@ -17,10 +26,9 @@ function updateDisplay() {
   let timer = document.getElementById("timer");
 
   timer.innerText =
-    String(mins).padStart(2, '0') + ":" +
-    String(secs).padStart(2, '0');
+    `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
 
-  // ⚠️ LAST 1 MINUTE GLOW
+  // ⚠️ LAST MINUTE GLOW
   if (seconds >= totalSeconds - 60) {
     timer.classList.add("warning");
   }
@@ -34,12 +42,10 @@ function startTimer() {
     if (seconds >= totalSeconds) {
       clearInterval(interval);
 
-      // 🔊 LOUD BUZZER
       let sound = document.getElementById("buzzer");
       sound.volume = 1;
       sound.play();
 
-      // 💥 FLASH EFFECT
       flashScreen();
     }
   }, 1000);
@@ -54,6 +60,6 @@ function flashScreen() {
 
     count++;
 
-    if (count > 8) clearInterval(flash);
-  }, 200);
+    if (count > 10) clearInterval(flash);
+  }, 150);
 }
