@@ -1,62 +1,75 @@
 body {
   margin: 0;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #141e30, #243b55);
   font-family: Arial;
+  overflow: hidden;
   color: white;
 }
 
-.container {
-  text-align: center;
+/* START SCREEN */
+.start-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #1a0000, #000);
 }
 
-.circle {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 20px auto;
-}
-
-svg {
-  transform: rotate(-90deg);
-}
-
-circle {
-  fill: none;
-  stroke-width: 10;
-}
-
-.bg {
-  stroke: #444;
-}
-
-.progress {
-  stroke: #00ffcc;
-  stroke-dasharray: 628; /* 2πr = 2*3.14*100 */
-  stroke-dashoffset: 628;
-  transition: stroke-dashoffset 1s linear;
-}
-
-.time {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 32px;
-}
-
-button {
-  padding: 10px 20px;
-  margin: 10px;
+/* GLOW BUTTON */
+.glow-btn {
+  font-size: 50px;
+  padding: 30px 80px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
+  background: #ff3c00;
+  color: white;
   cursor: pointer;
-  font-size: 16px;
+  box-shadow:
+    0 0 30px #ff3c00,
+    0 0 60px #ff0000,
+    0 0 120px #ff0000;
+  transition: 0.3s;
 }
 
-button:hover {
-  opacity: 0.8;
+.glow-btn:hover {
+  transform: scale(1.1);
+}
+
+/* TIMER SCREEN */
+.timer-screen {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* FIRE GLOW BACKGROUND */
+  background: radial-gradient(circle at center, #330000, #000000);
+  animation: fireGlow 2s infinite alternate;
+}
+
+/* BIG TIMER TEXT */
+#timer {
+  font-size: 180px;
+  letter-spacing: 5px;
+
+  color: #ff3c00;
+  text-shadow:
+    0 0 20px #ff3c00,
+    0 0 40px #ff0000,
+    0 0 80px #ff0000,
+    0 0 150px #ff0000;
+}
+
+/* FIRE ANIMATION */
+@keyframes fireGlow {
+  from {
+    background: radial-gradient(circle at center, #330000, #000);
+  }
+  to {
+    background: radial-gradient(circle at center, #660000, #000);
+  }
+}
+
+.hidden {
+  display: none;
 }
