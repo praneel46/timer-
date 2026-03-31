@@ -4,21 +4,18 @@
   <meta charset="UTF-8">
   <title>Event Timer</title>
 
-  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- START SCREEN -->
 <div id="startScreen" class="start-screen">
   <button class="start-btn" onclick="startApp()">START</button>
 </div>
 
-<!-- TIMER SCREEN -->
 <div id="timerScreen" class="timer-screen hidden">
-  <div id="timer" class="zoom">00:00</div>
+  <div class="bg-animation"></div>
+  <div id="timer">00:00</div>
 </div>
 
 <audio id="buzzer" src="buzzer.mp3"></audio>
