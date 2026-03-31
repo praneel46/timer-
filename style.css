@@ -48,21 +48,31 @@ body {
   background: black;
 }
 
-/* 🔥 FIRE BACKGROUND */
-.timer-screen::before {
-  content: "";
+/* 🔥 ANIMATED BACKGROUND */
+.bg-animation {
   position: absolute;
-  width: 200%;
-  height: 200%;
-  top: -50%;
-  left: -50%;
-  background: url("https://i.imgur.com/8yKQFQG.gif");
-  background-size: cover;
-  opacity: 0.12;
+  width: 100%;
+  height: 100%;
+
+  background:
+    radial-gradient(circle at 50% 60%, rgba(255,60,0,0.25), transparent 60%),
+    radial-gradient(circle at 30% 40%, rgba(255,0,0,0.15), transparent 60%),
+    radial-gradient(circle at 70% 30%, rgba(255,100,0,0.2), transparent 60%);
+
+  animation: moveBg 6s infinite alternate;
   z-index: 0;
 }
 
-/* 🔥 HUGE TIMER */
+@keyframes moveBg {
+  0% {
+    transform: scale(1) translate(0,0);
+  }
+  100% {
+    transform: scale(1.2) translate(-20px, 20px);
+  }
+}
+
+/* 🔥 BIG TIMER */
 #timer {
   position: relative;
   z-index: 1;
@@ -75,22 +85,6 @@ body {
   color: white;
 
   letter-spacing: -1vw;
-}
-
-/* 🎬 ZOOM-IN EFFECT */
-.zoom {
-  animation: zoomIn 1s ease;
-}
-
-@keyframes zoomIn {
-  from {
-    transform: scale(2);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
 }
 
 /* ⚠️ LAST MINUTE */
