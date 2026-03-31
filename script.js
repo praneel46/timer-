@@ -1,7 +1,6 @@
 let seconds = 0;
 let interval = null;
-
-const totalSeconds = 1200; // 20 min
+const totalSeconds = 1200;
 
 function startApp() {
   document.getElementById("startScreen").classList.add("hidden");
@@ -27,12 +26,25 @@ function startTimer() {
     if (seconds >= totalSeconds) {
       clearInterval(interval);
 
-      // LOUD BUZZER
+      // 🔊 LOUD BUZZER
       let sound = document.getElementById("buzzer");
+      sound.volume = 1;
       sound.play();
 
-      // Optional: flash effect
-      document.body.style.background = "red";
+      // 💥 FLASH EFFECT
+      flashScreen();
     }
   }, 1000);
+}
+
+function flashScreen() {
+  let screen = document.body;
+  let count = 0;
+
+  let flash = setInterval(() => {
+    screen.style.background = count % 2 === 0 ? "red" : "black";
+    count++;
+
+    if (count > 6) clearInterval(flash);
+  }, 200);
 }
