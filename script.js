@@ -1,6 +1,7 @@
 let seconds = 0;
 let interval = null;
-const totalSeconds = 1200;
+
+const totalSeconds = 1200; // 20 min
 
 function startApp() {
   document.getElementById("startScreen").classList.add("hidden");
@@ -13,9 +14,16 @@ function updateDisplay() {
   let mins = Math.floor(seconds / 60);
   let secs = seconds % 60;
 
-  document.getElementById("timer").innerText =
+  let timer = document.getElementById("timer");
+
+  timer.innerText =
     String(mins).padStart(2, '0') + ":" +
     String(secs).padStart(2, '0');
+
+  // ⚠️ LAST 1 MINUTE GLOW
+  if (seconds >= totalSeconds - 60) {
+    timer.classList.add("warning");
+  }
 }
 
 function startTimer() {
@@ -38,13 +46,14 @@ function startTimer() {
 }
 
 function flashScreen() {
-  let screen = document.body;
   let count = 0;
 
   let flash = setInterval(() => {
-    screen.style.background = count % 2 === 0 ? "red" : "black";
+    document.body.style.background =
+      count % 2 === 0 ? "red" : "black";
+
     count++;
 
-    if (count > 6) clearInterval(flash);
+    if (count > 8) clearInterval(flash);
   }, 200);
 }
